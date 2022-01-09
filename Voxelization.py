@@ -8,7 +8,6 @@ for file in os.listdir(directory):
     pcd = o3d.io.read_point_cloud(directory + '/' + file)
     max = np.amax(np.asarray(pcd.points))
     scale = 512/max
-    center = np.ndarray(shape=(0,0,0))
     pcd.scale(scale, center=pcd.get_center())
     voxel_grid = o3d.geometry.VoxelGrid.create_from_point_cloud(pcd, voxel_size=1)
 
